@@ -1,0 +1,50 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
+import time
+import random
+
+driver = webdriver.Chrome()
+driver.get('http://sso.centanet.com/cas/login?service=http%3a%2f%2fszccaitest%2ffrmlogin.aspx')
+driver.find_element(By.ID, 'user').send_keys('jinxy')
+driver.find_element(By.ID, 'psw').send_keys('123456@qq.com')
+driver.find_element(By.XPATH, '//*[@id="login-form"]/div[2]').click()
+time.sleep(3)
+# driver.switch_to.window(driver.window_handles[-data_cs])
+# driver.find_element(By.XPATH,'//*[@id="layer"]/div[data_cs]/div/p[data_cs]/label')
+driver.find_element(By.XPATH, '//*[@id="layer"]/div[data_cs]/div/p[data_cs]/span').click()
+driver.find_element(By.XPATH, '//*[@id="layer"]/div[data_cs]/p[2]').click()
+time.sleep(3)
+# iframe = driver.find_element(By.XPATH,'//*[@id="tab"]/div/div[2]/div[2]/iframe')
+# driver.switch_to.frame(iframe)
+# driver.find_element(By.XPATH,'//*[@id="Menu1_Menu1n75"]/td/table/tbody/tr/td/a').click()
+# driver.switch_to.window(driver.window_handles[-data_cs])
+driver.get('http://szccaitest/Contract/Property/frmPropertyList.aspx')
+driver.find_element(By.ID, 'NewPropertyList1_txtFloor').send_keys('2')
+driver.find_element(By.XPATH, '//*[@id="NewPropertyList1_btnSearch"]').click()
+driver.find_element(By.XPATH, '//*[@id="NewPropertyList1_dgList"]/tbody/tr[5]/td[15]').click()
+time.sleep(3)
+driver.switch_to.window(driver.window_handles[-1])
+driver.find_element(By.XPATH, '//*[@id="ContractEdit1_tabStrip1_pageView_contract_lstDepartment"]/option[2570]').click()
+driver.find_element(By.XPATH, '//*[@id="ContractEdit1_tabStrip1_pageView_contract_lstEmployee"]/option[5]').click()
+driver.find_element(By.XPATH, '//*[@id="ContractEdit1_tabStrip1_pageView_contract_txtContractDate"]').send_keys(
+    '20210411')
+time.sleep(3)
+driver.find_element(By.XPATH, '//*[@id="ContractEdit1_tabStrip1_pageView_contract_txtContractNo"]').send_keys(
+    '65412311232')
+time.sleep(3)
+driver.find_element(By.XPATH, '//*[@id="__tab_ContractEdit1_tabStrip1_pageView_buyerInformation"]').click()
+driver.find_element(By.XPATH, '//*[@id="btnSearchAgnecy"]').click()
+time.sleep(3)
+driver.switch_to.window(driver.window_handles[-1])
+driver.find_element(By.XPATH, '//*[@id="dgList"]/tbody/tr[4]/td[data_cs]').click()
+driver.find_element(By.XPATH, '//*[@id="btnOK"]').click()
+time.sleep(3)
+driver.switch_to.window(driver.window_handles[-1])
+driver.find_element(By.XPATH, '//*[@id="__tab_ContractEdit1_tabStrip1_pageView_contract"]').click()
+driver.find_element(By.XPATH, '//*[@id="ContractEdit1_tabStrip1_pageView_contract_txtContractNo"]').send_keys(
+    '65412311236')
+driver.find_element(By.XPATH, '//*[@id="ContractEdit1_btnSave"]').click()
+time.sleep(5)
+driver.switch_to.alert.accept()
+driver.switch_to.alert.accept()
